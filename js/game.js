@@ -1,4 +1,3 @@
-
 var AlienFlock = function AlienFlock() {
   this.invulnrable = true;
   this.dx = 10; this.dy = 0;
@@ -76,12 +75,15 @@ Alien.prototype.step = function(dt) {
   return true;
 }
 
+
+/*Random enemy missile fire*/
 Alien.prototype.fireSometimes = function() {
       if(Math.random()*100 < 10) {
         this.board.addSprite('missile',this.x + this.w/2 - Sprites.map.missile.w/2,
                                       this.y + this.h, 
                                      { dy: 100 });
       }
+    
 }
 
 var Player = function Player(opts) { 
@@ -107,8 +109,8 @@ Player.prototype.step = function(dt) {
 
   this.reloading--;
 
-  if(Game.keys['fire'] && this.reloading <= 0 && this.board.missiles < 3) {
-    GameAudio.play('fire');
+  if(Game.keys['fire'] && this.reloading <= 0 && this.board.missiles < 3) { //number of missiles before reload
+    GameAudio.play('fire'); //audio file for firing
     this.board.addSprite('missile',
                           this.x + this.w/2 - Sprites.map.missile.w/2,
                           this.y-this.h,
@@ -125,6 +127,7 @@ var Missile = function Missile(opts) {
    this.player = opts.player;
 }
 
+/*Draws a missle in HTML5 canvas*/
 Missile.prototype.draw = function(canvas) {
    Sprites.draw(canvas,'missile',this.x,this.y);
 }

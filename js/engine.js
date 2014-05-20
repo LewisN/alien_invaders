@@ -1,8 +1,10 @@
 var Game = new function() {                                                                  
-  var KEY_CODES = { 37:'left', 39:'right', 32 :'fire' };
+  var KEY_CODES = { 37:'left', 39:'right', 32 :'fire' }; //Keyboard key bindings
   this.keys = {};
 
-  this.initialize = function(canvas_dom,level_data,sprite_data,callbacks) {
+    
+/*Syntax = $(selector).action() */
+    this.initialize = function(canvas_dom,level_data,sprite_data,callbacks) {
     this.canvas_elem = $(canvas_dom)[0];
     this.canvas = this.canvas_elem.getContext('2d');
     this.width = $(this.canvas_elem).attr('width');
