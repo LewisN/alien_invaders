@@ -1,4 +1,4 @@
-
+/*defines alien starting positions*/
   var levelData = { 
      1:  [[0,0,0,0,0,0,0,0,0,0,0],
           [0,0,0,0,0,0,0,0,0,0,0],
@@ -23,6 +23,9 @@
           [0,0,1,1,1,1,1,1,1,1,0],
           [0,0,1,1,1,1,1,1,1,1,0]] };
 
+
+/*Defines individual sprites from sprite sheet - multiple frames need to be positioned
+to the right of frame 1*/
   var spriteData = {
     'alien1': { sx: 0,  sy: 0,  w: 23, h: 18, cls: Alien, frames: 2 },
     'alien2': { sx: 0,  sy: 18, w: 23, h: 18, cls: Alien, frames: 2 },
