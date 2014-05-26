@@ -1,0 +1,25 @@
+List of things to add/change.
+
+
+// HIGH PRIORITY
+-Change spritesheet
+-Add new sounds
+--Missile
+--Explosion
+-Change background (animate)
+-Add more levels
+-Allow player to move on Y axis
+
+// MEDIUM PRIORITY
+-Add scoreboard
+-Bases
+-Number of lives
+-Explosion image
+
+// LOW PRIORITY
+-Controller support
+-Add ranks
+-Boss level
+-Powerups
+-New modes
+-Character selection
