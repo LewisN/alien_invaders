@@ -1,5 +1,5 @@
 var Game = new function() {                                                                  
-  var KEY_CODES = { 37:'left', 39:'right', 32 :'fire' }; //Keyboard key bindings
+  var KEY_CODES = { 37:'left', 39:'right', 38:'up', 40:'down', 32 :'fire' }; //Keyboard key bindings
   this.keys = {};
 
     

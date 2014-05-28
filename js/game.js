@@ -100,12 +100,21 @@ Player.prototype.die = function() {
   Game.callbacks['die']();
 }
 
+/*controls player movement*/
 Player.prototype.step = function(dt) {
-  if(Game.keys['left']) { this.x -= 100 * dt; }
-  if(Game.keys['right']) { this.x += 100 * dt; }
+    //provides horizontal player movement
+    if(Game.keys['left']) { this.x -= 100 * dt; }
+    if(Game.keys['right']) { this.x += 100 * dt; }
 
-  if(this.x < 0) this.x = 0;
-  if(this.x > Game.width-this.w) this.x = Game.width-this.w;
+    //provides vertical player movement 
+    if(Game.keys['up']) { this.y -= 100 * dt; }
+    if(Game.keys['down']) { this.y += 100 * dt; }
+    
+    //limits player movement to game height and width
+    if(this.x < 0) this.x = 0;
+    if(this.x > Game.width-this.w) this.x = Game.width-this.w;
+    if(this.y < 0) this.y = 0;
+    if(this.y > Game.height-this.h) this.y = Game.height-this.h;
 
   this.reloading--;
 
