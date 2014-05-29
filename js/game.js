@@ -50,13 +50,13 @@ var Alien = function Alien(opts) {
 }
 
 Alien.prototype.draw = function(canvas) {
-  Sprites.draw(canvas,this.name,this.x,this.y,this.frame);
+    Sprites.draw(canvas,this.name,this.x,this.y,this.frame); //draws alien on canvas
 }
 
 Alien.prototype.die = function() {
-  GameAudio.play('die');
-  this.flock.speed += 1;
-  this.board.remove(this);
+    GameAudio.play('die'); //initiates death audio file
+    this.flock.speed += 1; //speeds up the flock upon the death of an alien
+    this.board.remove(this); //removes alien from gameboard
 }
 
 Alien.prototype.step = function(dt) {
@@ -136,7 +136,7 @@ var Missile = function Missile(opts) {
    this.player = opts.player;
 }
 
-/*Draws a missle in HTML5 canvas*/
+/*Draws missle*/
 Missile.prototype.draw = function(canvas) {
    Sprites.draw(canvas,'missile',this.x,this.y);
 }
