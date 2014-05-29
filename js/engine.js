@@ -28,7 +28,7 @@ var Game = new function() {
   this.loop = function() { 
     Game.board.step(30/1000); 
     Game.board.render(Game.canvas);
-    setTimeout(Game.loop,30);//changes game speed
+    setTimeout(Game.loop,20);//changes game speed
   };
 };
 
