@@ -12,10 +12,12 @@ var Game = new function() {
 
     $(window).keydown(function(event) {
       if(KEY_CODES[event.keyCode]) Game.keys[KEY_CODES[event.keyCode]] = true;
+		 event.preventDefault();
     });
 
     $(window).keyup(function(event) {
       if(KEY_CODES[event.keyCode]) Game.keys[KEY_CODES[event.keyCode]] = false;
+		 event.preventDefault();
     });
 
     this.level_data = level_data;
@@ -201,4 +203,3 @@ var GameAudio = new function() {
     }
   };
 };
-
