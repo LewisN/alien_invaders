@@ -127,6 +127,13 @@ Player.prototype.step = function(dt) {
     this.board.missiles++;
     this.reloading = 10;
   }
+ 
+    var enemy = this.board.collide(this);
+ 			if(enemy) { 
+			enemy.die();
+			return false;
+   }
+ 
   return true;
 }
 
