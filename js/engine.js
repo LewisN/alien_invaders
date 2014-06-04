@@ -107,7 +107,7 @@ var GameBoard = function GameBoard(level_number) {
     this.iterate(function() { 
         if(!this.step(dt)) this.die();
     }); 
-
+ 
     for(var i=0,len=this.removed_objs.length;i<len;i++) {
       var idx = this.objects.indexOf(this.removed_objs[i]);
       if(idx != -1) this.objects.splice(idx,1);
