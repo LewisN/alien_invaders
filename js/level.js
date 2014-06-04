@@ -92,7 +92,8 @@ to the right of frame 1*/
 	 
     var screen = new GameScreen("Game Over! Aliens Killed: " +kills, "(press enter to restart)",		"High Score: " +mostKills,
 																function() {
-                                     Game.loadBoard(new GameBoard(1));
+                                	kills = 0;
+																	Game.loadBoard(new GameBoard(1));
                                  });
     Game.loadBoard(screen);
   }
