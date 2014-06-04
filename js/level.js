@@ -80,6 +80,7 @@ to the right of frame 1*/
   function endGame() {
 	 
 	         if (kills > mostKills) {
+						alert("New high score of "+kills);
             mostKills = kills;
 					 }
 	 
