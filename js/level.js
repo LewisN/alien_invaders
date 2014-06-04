@@ -69,6 +69,11 @@ to the right of frame 1*/
   }
 
   function startGame() {
+	 
+	     if (localStorage.getItem("highScore")) { //if highScore exists in local storage
+        mostKills = localStorage.getItem("highScore"); //set value to mostKills
+    }
+	 
     var screen = new GameScreen("Alien Invaders","press enter to start","",
                                  function() {
                                      Game.loadBoard(new GameBoard(1));
@@ -79,9 +84,10 @@ to the right of frame 1*/
 
   function endGame() {
 	 
-	         if (kills > mostKills) {
-						alert("New high score of "+kills);
-            mostKills = kills;
+	         if (kills > mostKills) { //if the current kill count is higher than the high score
+						alert("New high score of "+kills); //alert player of new high score
+            mostKills = kills; //set high score to equal current kill count
+						localStorage.setItem("highScore", mostKills); //save high score to local storage
 					 }
 	 
     var screen = new GameScreen("Game Over! Aliens Killed: " +kills, "(press enter to restart)",		"High Score: " +mostKills,
