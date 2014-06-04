@@ -69,7 +69,7 @@ to the right of frame 1*/
   }
 
   function startGame() {
-    var screen = new GameScreen("Alien Invaders","press space to start",
+    var screen = new GameScreen("Alien Invaders","press enter to start",
                                  function() {
                                      Game.loadBoard(new GameBoard(1));
                                  });
@@ -78,7 +78,7 @@ to the right of frame 1*/
   }
 
   function endGame() {
-    var screen = new GameScreen("Game Over! Aliens Killed: " +kills, "(press space to restart)",
+    var screen = new GameScreen("Game Over! Aliens Killed: " +kills, "(press enter to restart)",
                                  function() {
                                      Game.loadBoard(new GameBoard(1));
                                  });
@@ -87,7 +87,7 @@ to the right of frame 1*/
 
 
   function winGame() {
-    var screen = new GameScreen("You Win! Aliens Killed:" +kills, "(press space to restart)",
+    var screen = new GameScreen("You Win! Aliens Killed:" +kills, "(press enter to restart)",
                                  function() {
                                      Game.loadBoard(new GameBoard(1));
                                  });
