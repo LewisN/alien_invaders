@@ -50,13 +50,13 @@ var Alien = function Alien(opts) {
 }
 
 Alien.prototype.draw = function(canvas) {
-  Sprites.draw(canvas,this.name,this.x,this.y,this.frame);
+    Sprites.draw(canvas,this.name,this.x,this.y,this.frame); //draws alien on canvas
 }
 
 Alien.prototype.die = function() {
-  GameAudio.play('die');
-  this.flock.speed += 1;
-  this.board.remove(this);
+    GameAudio.play('die'); //initiates death audio file
+    this.flock.speed += 1; //speeds up the flock upon the death of an alien
+    this.board.remove(this); //removes alien from gameboard
 }
 
 Alien.prototype.step = function(dt) {
@@ -100,12 +100,21 @@ Player.prototype.die = function() {
   Game.callbacks['die']();
 }
 
+/*controls player movement*/
 Player.prototype.step = function(dt) {
-  if(Game.keys['left']) { this.x -= 100 * dt; }
-  if(Game.keys['right']) { this.x += 100 * dt; }
+    //provides horizontal player movement
+    if(Game.keys['left']) { this.x -= 100 * dt; }
+    if(Game.keys['right']) { this.x += 100 * dt; }
 
-  if(this.x < 0) this.x = 0;
-  if(this.x > Game.width-this.w) this.x = Game.width-this.w;
+    //provides vertical player movement 
+    if(Game.keys['up']) { this.y -= 100 * dt; }
+    if(Game.keys['down']) { this.y += 100 * dt; }
+    
+    //limits player movement to game height and width
+    if(this.x < 0) this.x = 0;
+    if(this.x > Game.width-this.w) this.x = Game.width-this.w;
+    if(this.y < 0) this.y = 0;
+    if(this.y > Game.height-this.h) this.y = Game.height-this.h;
 
   this.reloading--;
 
@@ -118,6 +127,13 @@ Player.prototype.step = function(dt) {
     this.board.missiles++;
     this.reloading = 10;
   }
+ 
+    var enemy = this.board.collide(this);
+ 			if(enemy) { 
+			enemy.die();
+			return false;
+   }
+ 
   return true;
 }
 
@@ -127,7 +143,7 @@ var Missile = function Missile(opts) {
    this.player = opts.player;
 }
 
-/*Draws a missle in HTML5 canvas*/
+/*Draws missle*/
 Missile.prototype.draw = function(canvas) {
    Sprites.draw(canvas,'missile',this.x,this.y);
 }

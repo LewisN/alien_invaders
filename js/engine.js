@@ -1,5 +1,5 @@
 var Game = new function() {                                                                  
-  var KEY_CODES = { 37:'left', 39:'right', 32 :'fire' }; //Keyboard key bindings
+  var KEY_CODES = { 37:'left', 39:'right', 38:'up', 40:'down', 32 :'fire' }; //Keyboard key bindings
   this.keys = {};
 
     
@@ -12,10 +12,12 @@ var Game = new function() {
 
     $(window).keydown(function(event) {
       if(KEY_CODES[event.keyCode]) Game.keys[KEY_CODES[event.keyCode]] = true;
+		 event.preventDefault();
     });
 
     $(window).keyup(function(event) {
       if(KEY_CODES[event.keyCode]) Game.keys[KEY_CODES[event.keyCode]] = false;
+		 event.preventDefault();
     });
 
     this.level_data = level_data;
@@ -28,7 +30,7 @@ var Game = new function() {
   this.loop = function() { 
     Game.board.step(30/1000); 
     Game.board.render(Game.canvas);
-    setTimeout(Game.loop,30);//changes game speed
+    setTimeout(Game.loop,20);//changes game speed
   };
 };
 
@@ -39,7 +41,7 @@ var Sprites = new function() {
     this.map = sprite_data;
     this.image = new Image();
     this.image.onload = callback;
-    this.image.src = 'images/sprites.png';
+    this.image.src = 'images/sprites2.png';
   };
 
   this.draw = function(canvas,sprite,x,y,frame) {
@@ -201,4 +203,3 @@ var GameAudio = new function() {
     }
   };
 };
-
