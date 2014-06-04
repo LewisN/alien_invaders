@@ -99,6 +99,7 @@ Player.prototype.draw = function(canvas) {
 
 Player.prototype.die = function() {
   GameAudio.play('die');
+  kills = 0;
   Game.callbacks['die']();
  }
 
