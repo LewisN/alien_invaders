@@ -52,11 +52,13 @@ Alien.prototype.draw = function(canvas) {
     Sprites.draw(canvas,this.name,this.x,this.y,this.frame); //draws alien on canvas
 }
 
+kills = 0
+
 Alien.prototype.die = function() {
     GameAudio.play('die'); //initiates death audio file
     this.flock.speed += 1; //speeds up the flock upon the death of an alien
     this.board.remove(this); //removes alien from gameboard
- 		this.board.kills++;
+ 		kills++;
 }
 
 Alien.prototype.step = function(dt) {
@@ -137,7 +139,6 @@ Player.prototype.step = function(dt) {
  
   return true;
 }
-
 
 var Missile = function Missile(opts) {
    this.dy = opts.dy;

@@ -73,8 +73,6 @@ var GameBoard = function GameBoard(level_number) {
   this.missiles = 0;
   this.level = level_number;
   var board = this;
-  this.kills = 0;
-
 
   this.add =    function(obj) { obj.board=this; this.objects.push(obj); return obj; };
   this.remove = function(obj) { this.removed_objs.push(obj); };
@@ -119,7 +117,7 @@ var GameBoard = function GameBoard(level_number) {
     this.iterate(function() { this.draw(canvas); });
 
 	 var level_number = "Level: " + this.level;
-	 var killCount = "Aliens Murdered: " + this.kills;
+	 var killCount = "Aliens Murdered: " + kills;
 	 canvas.font="20px slkscr";
 	 canvas.fillText(level_number,10,25);
 	 canvas.fillText(killCount,10,45);
