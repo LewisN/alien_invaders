@@ -117,11 +117,12 @@ var GameBoard = function GameBoard(level_number) {
   this.render = function(canvas) {
     canvas.clearRect(0,0,Game.width,Game.height);
     this.iterate(function() { this.draw(canvas); });
- 
- 
-var killCount = "Aliens Murdered: " + this.kills;
-  canvas.font="20px slkscr";
-  canvas.fillText(killCount,10,25);
+
+	 var level_number = "Level: " + this.level;
+	 var killCount = "Aliens Murdered: " + this.kills;
+	 canvas.font="20px slkscr";
+	 canvas.fillText(level_number,10,25);
+	 canvas.fillText(killCount,10,45);
   };
 
   this.collision = function(o1,o2) {
