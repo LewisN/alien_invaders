@@ -74,7 +74,7 @@ to the right of frame 1*/
         mostKills = localStorage.getItem("highScore"); //set value to mostKills
     }
 	 
-    var screen = new GameScreen("Alien Invaders","press enter to start","",
+    var screen = new GameScreen("Planet Invasion","press enter to start","",
                                  function() {
                                      Game.loadBoard(new GameBoard(1));
                                  });

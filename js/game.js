@@ -62,9 +62,7 @@ Alien.prototype.die = function() {
  		kills++;
 }
 
-        if (kills > mostKills) {
-            mostKills = kills;
-        }
+
 
 
 Alien.prototype.step = function(dt) {
