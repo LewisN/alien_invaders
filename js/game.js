@@ -52,7 +52,8 @@ Alien.prototype.draw = function(canvas) {
     Sprites.draw(canvas,this.name,this.x,this.y,this.frame); //draws alien on canvas
 }
 
-kills = 0
+kills = 0;
+mostKills = 0;
 
 Alien.prototype.die = function() {
     GameAudio.play('die'); //initiates death audio file
@@ -60,6 +61,11 @@ Alien.prototype.die = function() {
     this.board.remove(this); //removes alien from gameboard
  		kills++;
 }
+
+        if (kills > mostKills) {
+            mostKills = kills;
+        }
+
 
 Alien.prototype.step = function(dt) {
   this.mx += dt * this.flock.dx;
@@ -167,5 +173,4 @@ Missile.prototype.die = function() {
   if(this.player) this.board.missiles--;
   if(this.board.missiles < 0) this.board.missiles=0;
    this.board.remove(this);
-}
-
+}    
