@@ -137,8 +137,8 @@ to the right of frame 1*/
     Game.loop();
   }
 
+
   function endGame() {
-	 
 	         if (kills > mostKills) { //if the current kill count is higher than the high score
 						alert("New high score of "+kills); //alert player of new high score
             mostKills = kills; //set high score to equal current kill count
@@ -165,10 +165,12 @@ to the right of frame 1*/
   $(function() {
     GameAudio.load({ 'fire' : 'media/laser.ogg', 'die' : 'media/explosion.ogg' }, 
                    function() { 
+										 
                        Game.initialize("#gameboard", levelData, spriteData,
                                       { "start": startGame,
                                         "die"  : endGame,
-                                        "win"  : winGame });
+                                        "win"  : winGame }); 
+
                    });
    });
 

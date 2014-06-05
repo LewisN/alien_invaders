@@ -15,19 +15,36 @@
 	 
       #game-wrapper { 
 			 margin:0 auto; width: 700px; 
+			box-shadow: 10px 10px 800px #000000;
+			}
+		
+			#container {
+				background-image: url(images/earth.png);
+				background-repeat: no-repeat;
+				background-position: center;
+				height: 1430px;	
 			}
 	 
 			@font-face {
     	font-family: 'slkscr';
     	src: url('fonts/slkscr.ttf');
 			}
+		
+			body {
+			background-color: black;
+			overflow-y: hidden;!important
+			}
+		
+		
   </style>
  
 </head>
 <body>
+	
+	<div id='container'>
   <div id='game-wrapper'>
     <canvas id='gameboard' width='700' height='500'></canvas>
   </div>
- 
+ </div>
 </body>
 </html>
