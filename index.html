@@ -2,20 +2,32 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <title>Alien Invaders</title>
+  <title>Planet Invasion</title>
   <script src='js/jquery-1.4.2.min.js'></script>
   <script src='js/engine.js'></script>
   <script src='js/game.js'></script>
   <script src='js/level.js'></script>
 
   <style>
-      #gameboard { background-color:black; }
-      #game-wrapper { margin:0 auto; width: 700px; }
+      #gameboard { 
+			 background-image:url('images/bg_img.png')
+			}
+	 
+      #game-wrapper { 
+			 margin:0 auto; width: 700px; 
+			}
+	 
+			@font-face {
+    	font-family: 'slkscr';
+    	src: url('fonts/slkscr.ttf');
+			}
   </style>
+ 
 </head>
 <body>
   <div id='game-wrapper'>
     <canvas id='gameboard' width='700' height='500'></canvas>
   </div>
+ 
 </body>
 </html>

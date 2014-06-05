@@ -1,5 +1,5 @@
 var Game = new function() {                                                                  
-  var KEY_CODES = { 37:'left', 39:'right', 38:'up', 40:'down', 32 :'fire' }; //Keyboard key bindings
+  var KEY_CODES = { 37:'left', 39:'right', 38:'up', 40:'down', 32 :'fire', 13 : 'init' }; //Keyboard key bindings
   this.keys = {};
 
     
@@ -30,7 +30,7 @@ var Game = new function() {
   this.loop = function() { 
     Game.board.step(30/1000); 
     Game.board.render(Game.canvas);
-    setTimeout(Game.loop,20);//changes game speed
+    setTimeout(Game.loop,14);//changes game speed
   };
 };
 
@@ -41,7 +41,7 @@ var Sprites = new function() {
     this.map = sprite_data;
     this.image = new Image();
     this.image.onload = callback;
-    this.image.src = 'images/sprites2.png';
+    this.image.src = 'images/sprites.png';
   };
 
   this.draw = function(canvas,sprite,x,y,frame) {
@@ -51,20 +51,25 @@ var Sprites = new function() {
   };
 }
 
-var GameScreen = function GameScreen(text,text2,callback) {
+var GameScreen = function GameScreen(text,text2,text3,callback) {
   this.step = function(dt) {
-    if(Game.keys['fire'] && callback) callback();
+    if(Game.keys['init'] && callback) callback();
   };
 
   this.render = function(canvas) {
     canvas.clearRect(0,0,Game.width,Game.height);
-    canvas.font = "bold 40px arial";
+    canvas.fillStyle = "#FFFFFF"; 
+	 	canvas.font = "40px slkscr";
     var measure = canvas.measureText(text);  
-    canvas.fillStyle = "#FFFFFF";
     canvas.fillText(text,Game.width/2 - measure.width/2,Game.height/2);
-    canvas.font = "bold 20px arial";
+	 	
+    canvas.font = "20px slkscr";
     var measure2 = canvas.measureText(text2);
     canvas.fillText(text2,Game.width/2 - measure2.width/2,Game.height/2 + 40);
+
+	  canvas.font = "40px slkscr";
+    var measure3 = canvas.measureText(text3);
+    canvas.fillText(text3,Game.width/2 - measure3.width/2,Game.height/2 + 200);
   };
 };
 
@@ -105,7 +110,7 @@ var GameBoard = function GameBoard(level_number) {
     this.iterate(function() { 
         if(!this.step(dt)) this.die();
     }); 
-
+ 
     for(var i=0,len=this.removed_objs.length;i<len;i++) {
       var idx = this.objects.indexOf(this.removed_objs[i]);
       if(idx != -1) this.objects.splice(idx,1);
@@ -115,6 +120,12 @@ var GameBoard = function GameBoard(level_number) {
   this.render = function(canvas) {
     canvas.clearRect(0,0,Game.width,Game.height);
     this.iterate(function() { this.draw(canvas); });
+
+	 var level_number = "Level: " + this.level;
+	 var killCount = "Aliens Murdered: " + kills;
+	 canvas.font="20px slkscr";
+	 canvas.fillText(level_number,10,25);
+	 canvas.fillText(killCount,10,45);
   };
 
   this.collision = function(o1,o2) {
@@ -202,4 +213,8 @@ var GameAudio = new function() {
       }
     }
   };
+
+
+ 
+ 
 };

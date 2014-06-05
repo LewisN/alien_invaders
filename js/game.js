@@ -42,7 +42,6 @@ var AlienFlock = function AlienFlock() {
 }
 
 
-
 var Alien = function Alien(opts) {
   this.flock = opts['flock'];
   this.frame = 0;
@@ -53,11 +52,18 @@ Alien.prototype.draw = function(canvas) {
     Sprites.draw(canvas,this.name,this.x,this.y,this.frame); //draws alien on canvas
 }
 
+kills = 0;
+mostKills = 0;
+
 Alien.prototype.die = function() {
     GameAudio.play('die'); //initiates death audio file
     this.flock.speed += 1; //speeds up the flock upon the death of an alien
     this.board.remove(this); //removes alien from gameboard
+ 		kills++;
 }
+
+
+
 
 Alien.prototype.step = function(dt) {
   this.mx += dt * this.flock.dx;
@@ -98,7 +104,8 @@ Player.prototype.draw = function(canvas) {
 Player.prototype.die = function() {
   GameAudio.play('die');
   Game.callbacks['die']();
-}
+ }
+
 
 /*controls player movement*/
 Player.prototype.step = function(dt) {
@@ -137,7 +144,6 @@ Player.prototype.step = function(dt) {
   return true;
 }
 
-
 var Missile = function Missile(opts) {
    this.dy = opts.dy;
    this.player = opts.player;
@@ -157,10 +163,11 @@ Missile.prototype.step = function(dt) {
      return false;
    }
    return (this.y < 0 || this.y > Game.height) ? false : true;
+ 
 }
 
 Missile.prototype.die = function() {
   if(this.player) this.board.missiles--;
   if(this.board.missiles < 0) this.board.missiles=0;
    this.board.remove(this);
-}
+}    
